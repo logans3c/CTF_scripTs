@@ -22,7 +22,6 @@ def find_line_content(line_number, output_file):
     while True:
         found = False
         for char in characters:
-            print_and_log(f"Testing character for line {line_number}: {repr(char)}", output_file)
             test_pattern = known_content + char
             if check_pattern(test_pattern, line_number):
                 known_content = test_pattern
@@ -54,4 +53,4 @@ def main():
     print("Line content discovery process completed. Check output.txt for the full log.")
 
 if __name__ == "__main__":
-    main().
+    main()
